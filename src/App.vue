@@ -2,7 +2,13 @@
   <div id = "app">
     <header>
       <router-link to="/home">Home</router-link><br>
-      <router-link to="/user" class="red">User</router-link>
+      <router-link to="/user" class="red">User</router-link><br>
+
+
+      <!--  增加两个到user组件的导航，可以看到这里使用了不同的to属性 -->
+      <router-link to="/user/123">User1</router-link><br>
+      <router-link to="/user/456">User4</router-link>
+
     </header>
     <router-view />
   </div>

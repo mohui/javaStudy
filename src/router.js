@@ -9,11 +9,6 @@ import User from "./view/user/user.vue";
 
 const router = new VueRouter({
     routes: [
-        // 动态路径参数 以冒号开头
-        {
-            path: '/user/:id',
-            component: User
-        },
         {
             path: '/home',
             component: Home
@@ -21,6 +16,16 @@ const router = new VueRouter({
         {
             path: '/user',
             component: User
+        },
+
+        // 动态路径参数 以冒号开头
+        {
+            path: '/user/:id',
+            component: User
+        },
+        {
+            path: '/',
+            component: Home
         }
     ]
 })
