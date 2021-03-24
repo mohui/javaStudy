@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>hospital</h1>
+    <h1>西张明中心卫生院</h1>
     <p>{{msg}}</p>
   </div>
 </template>

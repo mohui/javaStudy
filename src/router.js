@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-// 引入组件
+// // 引入组件
+import Layout from './view/layout/layout.vue';
 import Home from "./view/home/home.vue";
 import User from "./view/user/user.vue";
 import school from "./view/home/children/school.vue";
@@ -12,6 +13,31 @@ import watertightness from "./view/home/children/watertightness.vue";
 
 const router = new VueRouter({
     routes: [
+        {
+            path: '/',
+            component: Layout,
+            children: [
+                {
+                    path: "school",
+                    name: "school",
+                    component: school
+                },
+                {
+                    path: "hospital",
+                    name: "hospital",
+                    component: hospital
+                },
+                {
+                    path: "watertightness",
+                    name: "watertightness",
+                    component: watertightness
+                },
+                {
+                    path: "",
+                    component: school
+                }
+            ]
+        },
         {
             path: '/home',
             component: Home,
@@ -46,10 +72,6 @@ const router = new VueRouter({
         {
             path: '/user/:id',
             component: User
-        },
-        {
-            path: '/',
-            component: Home
         }
     ]
 })

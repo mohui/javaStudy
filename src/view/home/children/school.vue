@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>school</h1>
+    <h1>张明一小</h1>
     <p>{{msg}}</p>
   </div>
 </template>
