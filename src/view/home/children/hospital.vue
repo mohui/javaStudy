@@ -1,7 +1,13 @@
 <template>
   <div>
     <h1>西张明中心卫生院</h1>
-    <p>{{msg}}</p>
+    <div style="width: 100px">
+      <p>{{msg}}</p>
+    </div>
+    <div style="width: 100px">
+      <p>{{msg}}</p>
+    </div>
+
   </div>
 </template>
 <script>

@@ -11,6 +11,15 @@ const router = new VueRouter({
             component: () => import('./view/layout/layout.vue'),
             children: [
                 {
+                    path: "",
+                    component: () => import('./view/restaurant/index')
+                },
+                {
+                    path: "restaurant",
+                    name: "restaurant",
+                    component: () => import('./view/restaurant/index')
+                },
+                {
                     path: "school",
                     name: "school",
                     component: ()=> import('./view/home/children/school.vue')
@@ -24,10 +33,6 @@ const router = new VueRouter({
                     path: "watertightness",
                     name: "watertightness",
                     component: () => import('./view/home/children/watertightness.vue')
-                },
-                {
-                    path: "",
-                    component: () => import('./view/home/children/school.vue')
                 }
             ]
         }
