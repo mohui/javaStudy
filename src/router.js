@@ -1,79 +1,37 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-// // 引入组件
-import Layout from './view/layout/layout.vue';
-import Home from "./view/home/home.vue";
-import User from "./view/user/user.vue";
-import school from "./view/home/children/school.vue";
-import hospital from "./view/home/children/hospital.vue";
-import watertightness from "./view/home/children/watertightness.vue";
-
+// 引入组件
 const router = new VueRouter({
     routes: [
         {
             path: '/',
-            component: Layout,
+            component: () => import('./view/layout/layout.vue'),
             children: [
                 {
                     path: "school",
                     name: "school",
-                    component: school
+                    component: ()=> import('./view/home/children/school.vue')
                 },
                 {
                     path: "hospital",
                     name: "hospital",
-                    component: hospital
+                    component: () => import('./view/home/children/hospital.vue')
                 },
                 {
                     path: "watertightness",
                     name: "watertightness",
-                    component: watertightness
+                    component: () => import('./view/home/children/watertightness.vue')
                 },
                 {
                     path: "",
-                    component: school
+                    component: () => import('./view/home/children/school.vue')
                 }
             ]
-        },
-        {
-            path: '/home',
-            component: Home,
-            children: [
-                {
-                    path: "school",
-                    name: "school",
-                    component: school
-                },
-                {
-                    path: "hospital",
-                    name: "hospital",
-                    component: hospital
-                },
-                {
-                    path: "watertightness",
-                    name: "watertightness",
-                    component: watertightness
-                },
-                {
-                    path: "",
-                    component: school
-                }
-            ]
-        },
-        {
-            path: '/user',
-            component: User
-        },
-
-        // 动态路径参数 以冒号开头
-        {
-            path: '/user/:id',
-            component: User
         }
     ]
-})
+});
 
 export default router;
