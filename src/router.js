@@ -22,7 +22,7 @@ const router = new VueRouter({
                 {
                     path: "school",
                     name: "school",
-                    component: ()=> import('./view/home/children/school.vue')
+                    component: ()=> import('./view/school/index')
                 },
                 {
                     path: "hospital",
