@@ -1,7 +1,9 @@
 <template>
   <el-container class="container-full">
     <el-header class="header">
-      <span>{{ title }}</span>
+      <div class="headerDiv">
+        <span>{{ title }}</span>
+      </div>
     </el-header>
     <el-container>
 
@@ -51,20 +53,25 @@ export default {
 }
 </script>
 
-
 <style>
-
 .container-full {
   height: 100%;
 }
 
 .header {
   background-color: dodgerblue;
+  border-bottom: solid 1px greenyellow;
+  padding: 0;
+
   color: #333;
   text-align: center;
   line-height: 60px;
+  width: 100%;
+  display: flex;
 }
-
+.headerDiv{
+  position: fixed;
+}
 .aside {
   background-color: green;
   color: #333;
