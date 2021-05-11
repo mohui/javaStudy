@@ -1,6 +1,13 @@
 <template>
 
-  <div class="demo-image" style="height: 100%">
+  <div
+      class="demo-image"
+      style="height: 100%"
+      :body-style="{
+        height: 'calc(100% - 120px)',
+        display: 'flex',
+        'flex-direction': 'column'
+      }">
     <div class="block" v-for="fit in fits" :key="fit">
       <span class="demonstration">{{ fit }}</span>
       <el-image
