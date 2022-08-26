@@ -1,5 +1,6 @@
 # 代码实现
 - https://www.bilibili.com/video/BV1rv411k7RD?p=7&vd_source=39f266c622d872c7f9fb6ec3d2ad3a60
+- springBoot 项目代码必须放在 Application 类所在的 同级或者下级目录下
 
 ## application 启动文件
 ```
