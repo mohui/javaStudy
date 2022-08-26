@@ -1,5 +1,6 @@
 # 项目
-https://www.bilibili.com/video/BV1rv411k7RD?p=4&vd_source=39f266c622d872c7f9fb6ec3d2ad3a60
+https://www.bilibili.com/video/BV1rv411k7RD?p=5&vd_source=39f266c622d872c7f9fb6ec3d2ad3a60
+
 ## 创建一个空项目
 打开 IDE -> 点击 File -> 点击 New -> 选择 Project.. -> Empty Project
 ```
