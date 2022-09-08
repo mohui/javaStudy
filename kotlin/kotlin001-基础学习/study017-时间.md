@@ -1,5 +1,14 @@
 # 时间格式
 
+## 当天时间
+- 前闭后开
+```
+// 开始时间
+val start = LocalDateTime.now().toLocalDate().atStartOfDay()
+// 结束时间
+val end = LocalDateTime.now().toLocalDate().plusDays(1).atStartOfDay()
+```
+
 ## 日期时间
 ### 获取当前日期时间
 ```
@@ -49,6 +58,15 @@ val lastMinutesTime = LocalTime.now().plusSeconds(59)  // 12:00:59
 ```
 
 #### 当前时间转为当前分钟的开始时间和结束时间
+- 第一种方法
+```
+val currentTime = current.toLocalTime()
+// 当前分钟的开始时间
+val start = currentTime.truncatedTo(ChronoUnit.MINUTES)
+// 当前分钟的结束时间
+val end = start.plusSeconds(59)
+```
+- 第二种方法
 ```
 // 获取当前时间
 val current = LocalDateTime.now()
@@ -59,4 +77,30 @@ val endTime = current.format(DateTimeFormatter.ofPattern("HH:mm:59"))
 // 转为时间格式
 val start = DateUtil.parseTime(startTime).toLocalDateTime().toLocalTime()
 val end = DateUtil.parseTime(endTime).toLocalDateTime().toLocalTime()
+```
+
+## 时间周期
+```
+private fun calculationCycle(chronoNum: Int, chronoUnit: ChronoUnit, startDateTime: LocalDateTime?) {
+    var start: LocalDateTime? = null
+    var end: LocalDateTime? = null
+    var between: Long
+
+    val now = LocalDateTime.now()
+    between = chronoUnit.between(startDateTime, now) / chronoNum
+    val temp = chronoUnit.addTo(startDateTime, between * chronoNum)
+    if (temp != null) {
+        if (temp.isAfter(now)) {
+            start = chronoUnit.addTo(startDateTime, between * chronoNum - chronoNum)
+            end = temp
+        } else {
+            start = temp
+            end = chronoUnit.addTo(startDateTime, between * chronoNum + chronoNum)
+        }
+    }
+
+    println(start)
+    println(end)
+    println(between)
+}
 ```
