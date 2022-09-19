@@ -1,5 +1,6 @@
+### 非自然周
+##### 返回值中对象类
 ```
-
 data class ClockDayList(
     val start: LocalDateTime,
     val end: LocalDateTime,
@@ -7,8 +8,10 @@ data class ClockDayList(
     var clockInStatus: Boolean = false
 ) {
 }
+```
 
-
+##### 返回值格式
+```
 data class CalculationCycleResult(
     val start: java.time.LocalDateTime,
     val end: java.time.LocalDateTime,
@@ -17,10 +20,11 @@ data class CalculationCycleResult(
 ) {
 
 }
+```
 
-
-
-
+##### 非自然周的开始时间和结束时间方法实现
+- 可能是多周
+```
 fun calculationCycle(
     chronoNum: Int,
     chronoUnit: ChronoUnit,
