@@ -59,7 +59,7 @@
   }
 ]
 ```
-### 按照某个字段排序
+### sortedBy 按照某个字段排序
 ```
 val todayClockResult2 = todayClockResult1
 .sortedBy {
@@ -74,7 +74,7 @@ val todayClockResult2 = todayClockResult1
     }
 }
 ```
-### 按照两个字段排序
+### sortedWith 按照两个字段排序
 ```
 todayClockResult1
     .sortedWith { a, b ->
