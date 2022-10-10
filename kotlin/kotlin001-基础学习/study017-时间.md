@@ -15,7 +15,7 @@ val end = LocalDateTime.now().toLocalDate().plusDays(1).atStartOfDay()
 
 ## 获取当前年的1月1日0点0分
 ```
-LocalDate.of(LocalDate.now().year, 1, 1).atStartOfDay(),
+LocalDate.of(LocalDate.now().year, 1, 1).atStartOfDay();
 ```
 
 ## format 时间转为字符串
