@@ -43,6 +43,11 @@ val week = LocalDateTime.now().dayOfWeek.name // 星期的大写英语字母 THU
 val week = LocalDateTime.now().dayOfWeek.value // 数字 4
 ```
 
+### 获取当前时间是第几周
+```
+val week = LocalDateTime.now().get(ChronoField.ALIGNED_WEEK_OF_YEAR) // 数字41(第41周)
+```
+
 ### 字符串时间转为时间格式
 ```
 val time = DateUtil.parseTime("12:11:12").toLocalDateTime().toLocalTime()
