@@ -27,10 +27,11 @@ String str = "test123测试使用sdfghj";
 writer.write(str);
 ```
 ## ResourceUtil类，进行项目中的文件读取 假设我们的文件存放在src/resources/config目录下，则读取的代码如下所示
+```
 String str = ResourceUtil.readUtf8Str("config/abc.txt"); 
 System.out.println(str);
+```
 注意项:
-
 ResourceUtil中最核心的方法是getResourceObj，此方法可以根据传入路径是否为绝对路径而返 回不同的实现。
 比如路径是:file:/opt/test，或者/opt/test都会被当作绝对路径，此时内部会调用 FileResource来读取数据，
 如果不满足以上条件，默认调用ClassPathResource读取classpath中 的资源或者文件。
@@ -39,14 +40,15 @@ ResourceUtil中最核心的方法是getResourceObj，此方法可以根据传入
 如果需要自定义编码方式进行文件的读取，可以使用ResourceUtil类中的readStr方法，该方法的 第二个参数可以传入自定义的编码。
 
 ## 常用类cn.hutool.setting.dialect.Prop类
-假设我们想要读取src/resources目录下的properties文件内容，比如log4j.properties文件，那么代 码如下
+- 假设我们想要读取src/resources目录下的properties文件内容，比如log4j.properties文件，那么代码如下
 ```
 //默认ISO-8859-1编码，可以在构造中传入第二个参数来自定义编码方式 
 Props props = new Props("log4j.properties");
 String str = props.getStr("log4j.appender.console"); 
 System.out.println(str);
 ```
-注意项:
+
+- 注意项:
 1. Props类继承自Properties，所以可以兼容Properties类;
 2. 如果我们想要根据properties文件中的key值获取对应的value值，直接调用Props类的 getStr方法即可
 
@@ -78,6 +80,7 @@ System.out.println(test6);//运行结果:false
 boolean test7 = StrUtil.isAllNotBlank("123","test","\n"); 
 System.out.println(test7);//运行结果:false
 ```
+
 注意:这里的isAllNotBlank方法在校验入参中的多个字符串时，只要有一个不满足要求，就会返 回false。
 hasEmpty方法和isAllNotEmpty方法，
 这两个方法的参数也都是可变参数，所以也都是可以同时校验多个字符串的，
@@ -106,6 +109,7 @@ System.out.println(test6);//运行结果:false
 boolean test7 = StrUtil.isAllNotEmpty("123","test","\n"); 
 System.out.println(test7);//运行结果:true
 ```
+
 注意:这里的isAllNotEmpty方法和上面isAllNotBlank方法的最大区别就是，
 isAllNotEmpty方法 认为" "和"\n"不算空，所以即便参数中包含了它们，也会返回true。
 所以我认为相对来说 isAllNotBlank方法校验的更全面一点。
