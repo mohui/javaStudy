@@ -24,6 +24,11 @@ val startTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-
 val endTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
 ```
 
+## 转为 Date 格式
+```
+val date: Date = Date.from(LocalDate.of(2021, 12, 24).atStartOfDay().toInstant(ZoneOffset.MIN))
+```
+
 ## 时间
 ### 获取当前时间
 ```
