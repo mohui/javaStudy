@@ -1,3 +1,12 @@
+# 窗口函数
+- OVER()
+
+## 把总数放到每一行中
+```sql
+select  *, count(id) over()  from person;
+
+```
+
 ## 获取最后一次随访记录
 ```sql
 select id,
