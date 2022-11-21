@@ -1,75 +1,141 @@
 
+## 1、常用JSON|JSONObject|JSONArray介绍
 ```markdown
-1、常用JSON|JSONObject|JSONArray介绍
 https://blog.csdn.net/fanpeng1100/article/details/52856813
 https://blog.csdn.net/Double____C/article/details/89969204? utm_medium=distribute.pc_relevant.none-task-blog-baidujs-1
 https://mp.weixin.qq.com/s/ElTHj_Vx6DSFK4GpxiOfzA https://blog.csdn.net/fanpeng1100/article/details/52856813
-前端: 前台是操作JSON对象才能获取对象中的属性。 JSON.stringify(obj)将JSON对象转为字符串。 JSON.parse(string)将JSON字符串转为JSON对象格式; eval('('+ jsonstr + ')');将JSON字符串转为JSON对象格式; $.parseJSON( jsonstr ); 可以将JSON字符串转换成JSON对象
+```
+
+```
+前端: 前台是操作JSON对象才能获取对象中的属性。 
+JSON.stringify(obj)将JSON对象转为字符串。 
+JSON.parse(string)将JSON字符串转为JSON对象格式; 
+eval('('+ jsonstr + ')');将JSON字符串转为JSON对象格式; 
+$.parseJSON( jsonstr ); 可以将JSON字符串转换成JSON对象;
+```
+```
 后端:JSONObject和JSON字符串，格式一致，区别在于是否有引号(双引 号或单引号)，而且类中方法不同(前台同理)。
 在后台 JSONObject和JSON字符串显示的格式和内容是一样的(后台没有双 引号区分，前台有引号区分)，所以只能根据类型区分。
 @ResponseBody是转成JSON字符串给前台。 Object是根据toString方法的格式打印出来和json格式不同。
-后台工具类:
-一、Google的Gson https://www.cnblogs.com/qinxu/p/9504412.html
-         
-               依赖
- <dependency> <groupId>com.google.code.gson</groupId> <artifactId>gson</artifactId> <version>2.8.3</version> <classifier>jdk15</classifier>
-</dependency>
-Gson是目前功能最全的Json解析神器，Gson当初是为因应Google公司 内部需求而由Google自行研发而来，但自从在2008年五月公开发布第一 版后已被许多公司或用户应用。Gson的应用主要为toJson与fromJson 两个转换函数，无依赖，不需要例外额外的jar，能够直接跑在JDK上。
-而在使用这种对象转换之前需先创建好对象的类型以及其成员才能成功 的将JSON字符串成功转换成相对应的对象。类里面只要有get和set方 法，Gson完全可以将复杂类型的json到bean或bean到json的转换，是 JSON解析的神器。
-Gson在功能上面无可挑剔，但是性能上面比FastJson有所差距。
-1、API
-Gson类:解析json的最基础的工具类 JsonParser类:解析器来解析JSON到JsonElements的解析树 JsonElement类:一个类代表的JSON元素 JsonObject类:JSON对象类型 JsonArray类:JsonObject数组 TypeToken类:用于创建type，比如泛型List<?>
-2、Gson类 (1)、bean(对象，集合，数组)转json字符串
- Gson gson=new Gson();
-     String json = gson toJson(obj);
+```
 
-              String json = gson.toJson(obj);
-  (2)、json字符串转bean(8种基本类型，bean对象) Gson gson = new Gson();
-String json = "{\"id\":\"2\",\"name\":\"Json技术\"}"; T book = gson.fromJson(json, T.class);
-(3)、json字符串转复杂bean(集合,数组)
+## 后台工具类:
+### Google的Gson https://www.cnblogs.com/qinxu/p/9504412.html
+
+- 依赖
+```html
+<dependency> 
+    <groupId>com.google.code.gson</groupId> 
+    <artifactId>gson</artifactId> 
+    <version>2.8.3</version> 
+    <classifier>jdk15</classifier>
+</dependency>
+```
+
+```
+Gson是目前功能最全的Json解析神器，
+Gson当初是为因应Google公司 内部需求而由Google自行研发而来，但自从在2008年五月公开发布第一 版后已被许多公司或用户应用。
+Gson的应用主要为toJson与fromJson 两个转换函数，无依赖，不需要例外额外的jar，能够直接跑在JDK上。
+而在使用这种对象转换之前需先创建好对象的类型以及其成员才能成功 的将JSON字符串成功转换成相对应的对象。
+类里面只要有get和set方法，Gson完全可以将复杂类型的json到bean或bean到json的转换，是 JSON解析的神器。
+Gson在功能上面无可挑剔，但是性能上面比FastJson有所差距。
+```
+
+##### 1、API
+```
+Gson类:解析json的最基础的工具类 
+JsonParser类:解析器来解析JSON到JsonElements的解析树 
+JsonElement类:一个类代表的JSON元素 
+JsonObject类:JSON对象类型 
+JsonArray类:JsonObject数组 
+TypeToken类:用于创建type，比如泛型List<?>
+```
+##### Gson类 
+
+1. bean(对象，集合，数组)转json字符串
+```markdown
+Gson gson=new Gson();
+String json = gson.toJson(obj);
+```
+2. json字符串转bean(8种基本类型，bean对象)
+```
+Gson gson = new Gson();
+String json = "{\"id\":\"2\",\"name\":\"Json技术\"}"; 
+T book = gson.fromJson(json, T.class);
+```
+3. json字符串转复杂bean(集合,数组)
+```
 Gson gson = new Gson();
 String json = "[{\"id\":\"1\",\"name\":\"Json技术\"},
-{\"id\":\"2\",\"name\":\"java技术\"}]"; //将json字符串转换成List
+{\"id\":\"2\",\"name\":\"java技术\"}]"; 
+//将json字符串转换成List
 List list = gson.fromJson(json,new TypeToken<List>() {}.getType());
 //将json字符串转换成Set
-Set set = gson.fromJson(json,new TypeToken<Set>()
-{}.getType()); //将json字符串转换成Set
-String[] strings = gson.fromJson(json, String[].class); //格式化json字符串
+Set set = gson.fromJson(json,new TypeToken<Set>() {}.getType());
+//将json字符串转换成Set
+String[] strings = gson.fromJson(json, String[].class); 
+//格式化json字符串
 String json = "[{\"id\":\"1\",\"name\":\"Json技术\"}, {\"id\":\"2\",\"name\":\"java技术\"}]";
 Gson gson = new GsonBuilder().setPrettyPrinting().create();
-JsonParser jp = new JsonParser(); JsonElement je = jp.parse(json); json = gson.toJson(je);
-(4)、JSON字符串转JsonObject,并且获取JSONObject中的属性 JsonObject jsonObject = new JsonParser().parse(json 串).getAsJsonObject();
+JsonParser jp = new JsonParser(); 
+JsonElement je = jp.parse(json); 
+json = gson.toJson(je);
+```
+(4)、JSON字符串转JsonObject,并且获取JSONObject中的属性
+```
+JsonObject jsonObject = new JsonParser().parse(json 串).getAsJsonObject();
 String msg = jsonObject.get("msg属性 名").getAsJsonObject().getAsString();
-String code= jsonObject.get("code属性
-     
-              String code jsonObject.get( code属性
-  名").getAsJsonObject().getAsString();
-二、Alibaba的fastjson
+String code= jsonObject.get("code属性名").getAsJsonObject().getAsString();
+```  
+### 二、Alibaba的fastjson
 https://blog.csdn.net/srj1095530512/article/details/82529759
+
 依赖
-<dependency> <groupId>com.alibaba</groupId>
-<artifactId>fastjson</artifactId>
-<version>1.2.41</version> </dependency>
-Fastjson是一个Java语言编写的高性能的JSON处理器,由阿里巴巴公司 开发。无依赖，不需要例外额外的jar，能够直接跑在JDK上。FastJson 在复杂类型的Bean转换Json上会出现一些问题，可能会出现引用的类 型，导致Json转换出错，需要制定引用。
+```html
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>fastjson</artifactId>
+    <version>1.2.41</version> 
+</dependency>
+
+```
+
+```markdown
+Fastjson是一个Java语言编写的高性能的JSON处理器,由阿里巴巴公司开发。
+无依赖，不需要例外额外的jar，能够直接跑在JDK上。
+FastJson 在复杂类型的Bean转换Json上会出现一些问题，可能会出现引用的类型，导致Json转换出错，需要制定引用。
 FastJson采用独创的算法，将parse的速度提升到极致，超过所有json 库。
 Fastjson的API入口类是com.alibaba.fastjson.JSON,常用的是其中的静 态方法.父类都是JSON,所以可以直接使用JOSN操作
-11 印品黑体
-         
-                com.alibaba.fastjson.JSONObject extends JSON implements Map<String, Object>, Cloneable, Serializable,InvocationHandler com.alibaba.fastjson.JSONArray extends JSON implements List<Object> ,Cloneable, Serializable
-----JSON(实现json对象，json对象数组，javabean对象，json文 本之间的相互转化。)
-(1)把JSON文本----->对象(JSONObject， JSONArray,JavaBean)
+```
+
+```
+com.alibaba.fastjson.JSONObject extends JSON implements 
+Map<String, Object>, 
+Cloneable, 
+Serializable,
+InvocationHandler 
+com.alibaba.fastjson.JSONArray extends JSON implements List<Object>,
+Cloneable, Serializable
+```
+
+### JSON(实现json对象，json对象数组，javabean对象，json文本之间的相互转化。)
+1. 把JSON文本----->对象(JSONObject， JSONArray,JavaBean)
+```
 public static final Object parse(String text); // 把JSON文本 parse为JSONObject或者JSONArray
 public static final JSONObject parseObject(String text); // 把JSON文本parse成JSONObject
 public static final <T>T parseObject(String text, Class<T> clazz); // 把JSON文本parse为JavaBean
 T t=JSON.parseObject(String text,new TypeReference<T>() {});// 把JSON文本parse为JavaBean
 public static final JSONArray parseArray(String text); // 把 JSON文本parse成JSONArray
 public static final <T> List<T>parseArray(String text, Class<T> clazz); //把JSON文本parse成JavaBean集合
-(2)把JavaBean(对象，Map，Collection)----JSON文本， JSONObject，JSONArray(fastJson在转换java对象为json的时 候，默认是不序列化null值的属性，也可以使用)
-public static final String toJSONString(Object object); // 将 JavaBean序列化为JSON文本
-     bli tti fi lSti tJSONSti (Obj t bj tb l
+```
+2. 把JavaBean(对象，Map，Collection)----JSON文本， JSONObject，JSONArray 
+(fastJson在转换java对象为json的时 候，默认是不序列化null值的属性，也可以使用)
 
-                 public static final String toJSONString(Object object, boolean prettyFormat); // 将JavaBean序列化为带格式的JSON文本
+```
+public static final String toJSONString(Object object); // 将 JavaBean序列化为JSON文本
+public static final String toJSONString(Object object, boolean prettyFormat); // 将JavaBean序列化为带格式的JSON文本
 public static final Object toJSON(Object javaObject); //将 (JavaBean，Map)和Collection转换为JSONObject和 JSONArray。
+
 (3) 把JSONObject转成JavaBean
 public static <T> T toJavaObject(JSON json, Class<T> clazz)
 ---JSONObject(提供put/get方法，底层map<k,v>实现)
@@ -81,16 +147,14 @@ String str=JSONObject.toJSONString(Object object, SerializerFeature... features)
 Object o = JSONObject.toJSON(Object javaObject);// (JSON-->JSON,Map-->JSONbject，Collection-->JSONArray， JSONSerializable-->Object,Object-->Object)
 (2)把JSON文本----->对象(JSONObject， JSONArray,JavaBean)
 Object o=JSONObject.parse(String text);
-JSONObject jo=JSONObject.parseObject(String text); JSONArray jsonArray= JSONObject.parseArray(String
-text);
-List<T> list= JSONObject parseArray(String text Class<T>
-    
-              List<T> list= JSONObject.parseArray(String text, Class<T>
-  clazz)
+JSONObject jo=JSONObject.parseObject(String text); 
+JSONArray jsonArray= JSONObject.parseArray(String text);
+List<T> list= JSONObject.parseArray(String text, Class<T> clazz)
 ---JSONArray(提供add/set/get/remove/size/iterator方法，底 层List实现,主要操作JSONObject)
 [
-{"ID": 1001, "name": "张三", "age": 24},
-{"ID": 1002, "name": "李四", "age": 25}, {"ID": 1003, "name": "王五", "age": 22} ]
+    {"ID": 1001, "name": "张三", "age": 24},
+    {"ID": 1002, "name": "李四", "age": 25}, {"ID": 1003, "name": "王五", "age": 22}
+]
 (1)JSONArray中获取指定位置JSONObject
 JSONArray jsonArray= new JSONArray();
 JSONObject jsonObject = jsonArray.getJSONObject(int
@@ -105,25 +169,39 @@ public String toJSONString();
 public static String toJSONString(Object object,
 SerializerFeature... features)
 (4)把JSONArray对象数组---->javaBean数组 public Object[] toArray();
-     
-                y
-  使用TypeReference
+```
+##### 使用TypeReference
+```
 // 可以直接使用
 HashMap<String, String> map = JSONObject.parseObject(str, new TypeReference<HashMap<String, String>>(){});
-// 其他类型对象 EnjoyResponseDTO<EnjoyPageResponseDataDTO<Long>> result = JSONObject.parseObject(str, new TypeReference<EnjoyResponseDTO<EnjoyPageResponseDat aDTO<Long>>>(){});
-// 或者type的构造中使用参数 EnjoyResponseDTO<EnjoyPageResponseDataDTO<T>> result = JSONObject.parseObject(str, new TypeReference<EnjoyResponseDTO<EnjoyPageResponseDat aDTO<T>>>(Long.class){});
+// 其他类型对象 
+EnjoyResponseDTO<EnjoyPageResponseDataDTO<Long>> result = 
+    JSONObject.parseObject(str, new TypeReference<EnjoyResponseDTO<EnjoyPageResponseDat aDTO<Long>>>(){});
+// 或者type的构造中使用参数 
+EnjoyResponseDTO<EnjoyPageResponseDataDTO<T>> result = 
+JSONObject.parseObject(str, new TypeReference<EnjoyResponseDTO<EnjoyPageResponseDat aDTO<T>>>(Long.class){});
 List<String> list2 = jsonObj.getObject("a", new TypeReference<List<Integer>>(){});
+```
 三、Jackson
 https://blog.csdn.net/u011054333/article/details/80504154
   依赖
-   
-                <properties> <jackson.version>1.9.13</jackson.version>
-</properties> <dependencies>
-<!-- json和bean之间相互转换 --> <dependency>
-<groupId>org.codehaus.jackson</groupId> <artifactId>jackson-core-asl</artifactId> <version>${jackson.version}</version>
-</dependency> <dependency>
+```html
+<properties> 
+    <jackson.version>1.9.13</jackson.version>
+</properties> 
+<dependencies>
+<!-- json和bean之间相互转换 --> 
+    <dependency>
+        <groupId>org.codehaus.jackson</groupId> 
+        <artifactId>jackson-core-asl</artifactId>
+        <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
 <groupId>org.codehaus.jackson</groupId> <artifactId>jackson-mapper-asl</artifactId> <version>${jackson.version}</version>
 </dependency> </dependencies>
+```
+
+```
 相比json-lib框架，Jackson所依赖的jar包较少，简单易用并且性能也要 相对高些。而且Jackson社区相对比较活跃，更新速度也比较快。 Jackson对于复杂类型的json转换bean会出现问题，一些集合Map， List的转换出现问题。Jackson对于复杂类型的bean转换Json，转换的 json格式不是标准的Json格式。
 当javabean对象中如果有Date类型字段，那么转换成json 就变成了时 间戳格式，这是不希望看到的
 @JsonFormat(pattern = “yyyy-MM-dd”) :按此格式格式化这 个字段
@@ -207,8 +285,8 @@ String jsonString = JSONObject.toJSONString(riemannUser); System.out.println(jso
 //对比 //json-lib和fastjson打印结果不同，会打印对象的所有属性，不管 属性是否有值，而fastjson只打印有值的属性。
 五、总结
 综上4种Json技术的比较，在项目选型的时候可以使用Google的Gson和 阿里巴巴的FastJson两种并行使用，如果只是功能要求，没有性能要 求，可以使用google的Gson，如果有性能上面的要求可以使用Gson将 bean转换json确保数据的正确，使用FastJson将Json转换Bean。
-   
-               六、一些概念
+
+六、一些概念
 JSON对象
 json对象(JsonObject)和json串的区别就两点，第一点是否能调 用方法，第二点是否带引号
 定义
