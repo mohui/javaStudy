@@ -1,15 +1,12 @@
 service
 
 ```markdown
-```markdown
-    data class GroupNode(
-        val key: LocalDateTime,
-        var keyUnit: TimeServiceUnit? = null, // 为null说明未分组
-        var value: MrClockIn? = null,
-        var child: MutableList<GroupNode>? = null // 为null说明未分组
-    )
-```
-
+data class GroupNode(
+    val key: LocalDateTime,
+    var keyUnit: TimeServiceUnit? = null, // 为null说明未分组
+    var value: MrClockIn? = null,
+    var child: MutableList<GroupNode>? = null // 为null说明未分组
+)
 ```
 
 
@@ -264,24 +261,24 @@ enum class TimeServiceUnit(
 
 ```
 println("---------------------------------------------以下是周时间开始---------------------------------------------")
-        val timeNum = 3;
-        val timeUnit = TimeServiceUnit.WEEKS.value
-        val startTime = LocalDate.now().minusDays(26).atStartOfDay()
+val timeNum = 3;
+val timeUnit = TimeServiceUnit.WEEKS.value
+val startTime = LocalDate.now().minusDays(26).atStartOfDay()
 
-        val timeObj = healthPlanService.calculationCycle(
-            timeNum,
-            ChronoUnit.valueOf(timeUnit),
-            startTime
-        )
-        println(timeObj)
+val timeObj = healthPlanService.calculationCycle(
+    timeNum,
+    ChronoUnit.valueOf(timeUnit),
+    startTime
+)
+println(timeObj)
 
-        println("---------------------------------------------以下是周时间结束---------------------------------------------")
-        println("---------------------------------------------以下是日时间开始---------------------------------------------")
-        val timeObj4 = healthPlanService.calculationCycle(
-            4,
-            ChronoUnit.valueOf(TimeServiceUnit.DAYS.value),
-            startTime
-        )
-        println(timeObj4)
-        println("---------------------------------------------以下是日时间结束---------------------------------------------")
+println("---------------------------------------------以下是周时间结束---------------------------------------------")
+println("---------------------------------------------以下是日时间开始---------------------------------------------")
+val timeObj4 = healthPlanService.calculationCycle(
+4,
+ChronoUnit.valueOf(TimeServiceUnit.DAYS.value),
+startTime
+)
+println(timeObj4)
+println("---------------------------------------------以下是日时间结束---------------------------------------------")
 ```
