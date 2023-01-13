@@ -18,6 +18,13 @@ val end = LocalDateTime.now().toLocalDate().plusDays(1).atStartOfDay()
 LocalDate.of(LocalDate.now().year, 1, 1).atStartOfDay();
 ```
 
+## 获取
+```markdown
+val tomorrow = LocalDateTime.now().toLocalDate().atStartOfDay().plusDays(1)
+
+val monthStartDate = LocalDate.of(LocalDate.now().year, LocalDate.now().month, 1).atStartOfDay()
+```
+
 ## format 时间转为字符串
 ```
 val startTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
