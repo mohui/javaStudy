@@ -17,8 +17,8 @@ val result = table.saveOrUpdate(
         )
 ```
 ### 新增必填和非必填的用法
-```
 
+```
 dpmPatientInfoTable.save(
     DpmPatientInfo.forInsert(
         BigInteger.valueOf(11111),
@@ -37,6 +37,7 @@ dpmPatientInfoTable.save(
     }
 )
 ```
+
 ## 删
 
 ### 根据主键删除
@@ -44,10 +45,11 @@ dpmPatientInfoTable.save(
 val result = table.deleteByKnId(id)
 ```
 
-### 根据主见删除
+### 根据主键删除
 ```markdown
 val result = table.deleteByKnId(id)
 ```
+
 ## 改
 
 ### 修改单个字段
@@ -58,6 +60,7 @@ table
     .where(MrMedicationRemindTable.KnId.eq(arg(updStatusParams.id)))
     .execute()
 ```
+
 ## 查
 
 ### 根据where条件查询
