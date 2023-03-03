@@ -10,3 +10,12 @@
 | Transparent native-to-ascii conversion |    不选 | 透明的本机到ascii转换(百度翻译) |
 
 
+### 查看版本
+- 看运行版本
+```yaml
+java --version
+```
+- 看编译版本
+```yaml
+javac --version
+```

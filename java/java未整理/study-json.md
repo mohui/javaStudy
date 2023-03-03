@@ -298,7 +298,7 @@ json对象(JsonObject)和json串的区别就两点，第一点是否能调 用�
 }
 JSON对象数组
       
-                  1、数据在方括号中(可理解为数组) 2、方括号中每个数据以json对象形式出现 3、每两个数据以逗号分隔(最后一个无需逗号) 4、遵守上面3点，便可形成一个json对象数组(及一个数组中，存 储了多个json对象)
+1、数据在方括号中(可理解为数组) 2、方括号中每个数据以json对象形式出现 3、每两个数据以逗号分隔(最后一个无需逗号) 4、遵守上面3点，便可形成一个json对象数组(及一个数组中，存 储了多个json对象)
 [
 {"ID": 1001, "name": "张三", "age": 24}, {"ID": 1002, "name": "李四", "age": 25}, {"ID": 1003, "name": "王五", "age": 22}
 ]
@@ -310,7 +310,7 @@ JSON对象和JSON对象数组结合
 {"ID": 1001, "name": "张三", "age": 24}, {"ID": 1002, "name": "李四", "age": 25}, {"ID": 1003, "name": "王五", "age": 22}], "部门位置":"xx楼21号"
 }
    
-                 JSON字符串
+JSON字符串
  1、它必须是一个字符串，由" "或者' '包裹数据，支持字符串的各种 操作。和java字符串一样，只是格式是json格式的。 2、里面的数据格式应该要满足其中一个格式，可以是json对象，也 可以是json对象数组或者是两种基本形式的组合变形的格式。即 json字符串必须是json对象或json对象数组或两者组合的这种格 式。
 "{
 \"部门名称\":\"研发部\",
@@ -318,12 +318,13 @@ JSON对象和JSON对象数组结合
 {\"ID\": 1002, \"name\": \"李四\", \"age\": 25},
 {\"ID\": 1003, \"name\": \"王五\", \"age\": 22}], \"部门位置\":\"xx楼21号\"
 }"
+```
 七、SpringMVC——处理 JSON:使用 HttpMessageConverter
-一、SpringMVC处理JSON流程 1. 加入 jar 包: jackson-annotations-2.1.5.jar jackson-core-2.1.5.jar jackson-databind-2.1.5.jar
+```
+一、SpringMVC处理JSON流程 
+1. 加入 jar 包: jackson-annotations-2.1.5.jar jackson-core-2.1.5.jar jackson-databind-2.1.5.jar
 2. 编写目标方法，使其返回 JSON 对应的对象或集合
-    
-                2. 编写目标方法，使其返回 JSON 对应的对象或集合
-  3.在方法上添加 @ResponseBody 注解 /**@ResponseBody 输出处理(json,string)
+3.在方法上添加 @ResponseBody 注解 /**@ResponseBody 输出处理(json,string)
 将内容或对象作为 HTTP 响应正文返回，使用@ResponseBody 将会跳过视图处理部分，而是调用适合HttpMessageConverter， 将返回值写入输出流。
 * 测试返回Json串 * @param map
 * @return
