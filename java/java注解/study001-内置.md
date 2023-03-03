@@ -17,3 +17,6 @@
 
 ### @SuppressWarnings
 - 压制警告
+
+## @Configuration
+- 这个注解贴在类上, 表示这个类是一个配置类
