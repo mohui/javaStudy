@@ -20,3 +20,6 @@
 
 ## @Configuration
 - 这个注解贴在类上, 表示这个类是一个配置类
+
+## @Bean
+- 相当于之前的bean标签, spring会把bean注解方法的返回值交给spring容器进行管理
