@@ -7,6 +7,12 @@ select  *, count(id) over()  from person;
 
 ```
 
+## having的用法
+- 员工年龄大于20, 并且工作地方大于3人的地址
+```sql
+select address, count(1) counts from 表名 where age > 20 group by address having counts > 3
+```
+
 ## 获取最后一次随访记录
 ```sql
 select id,
