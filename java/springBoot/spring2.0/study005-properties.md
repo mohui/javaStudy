@@ -1,5 +1,28 @@
 # application.properties 核心配置文件
 - http://localhost:8080/mapValue
+
+## 读取配置文件内容
+- @Value("${title}") 
+- @value()注解, 用法: "${}"
+```properties
+title=hello word
+```
+
+```controller
+public class IndexController {
+    @Value("${title}")
+    private String title;
+    
+    
+    public @ResponseBody String say() {
+        return title;
+    }
+}
+
+```
+
+
+## 代码实现
 ```
 package com.xzmh.springboot.xzm.web;
 
