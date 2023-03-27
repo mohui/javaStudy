@@ -1,7 +1,8 @@
 # 注解
 - @RestController
 - @Controller
-- @Controller
+- @ResponseBody
+- @Autowired
 - @Transactional
 
 ## @RestController
@@ -26,3 +27,12 @@
 ```markdown
 @Transactional(rollbackFor = [Exception::class])
 ```
+
+## @GetMapping(value = ["/list"])
+- 只接受get请求
+
+## @PostMapping(value = ["/test"])
+- 只接受post请求
+
+## @RequestMapping(value="/test", method=RequestMethod.POST)
+* 发送POST请求
