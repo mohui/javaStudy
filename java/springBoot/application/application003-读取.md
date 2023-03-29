@@ -12,16 +12,15 @@ public class IndexController {
     @Value("${title}")
     private String title;
     
-    
     public @ResponseBody String say() {
         return title;
     }
 }
-
 ```
 ## 读取配置文件对象内容
 - 在配置文件定义对象
 - 创建config
+
 ### 配置文件内容
 - 开头必须一样 eg: country.
 ```properties
@@ -72,7 +71,6 @@ public class Country {
 public class IndexController {
     @Autowired
     private Country country;
-    
     
     @RequestMapping(value = "/getConfig")
     public @ResponseBody Map<String, Object> getConfig() {
